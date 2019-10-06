@@ -54,7 +54,11 @@ function dropLetters(){
 		$('#scoreNum').show();
 
 		$('iframe').show();
-		$('iframe').prop('src', settings.videoUrl);
+
+		if($('iframe').prop('src') != settings.videoUrl){
+			$('iframe').prop('src', settings.videoUrl);
+		}
+
 		//$('iframe')[0].contentWindow.location.reload(true);
 
 
