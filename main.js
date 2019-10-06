@@ -10,24 +10,27 @@ $(document).ready(function(){
 	});
 });
 
-var _settings = {
+var settings = {
 	letterArray: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz',
 	colorArray: ['lightpink','lightgreen','lightgray','plum', 'lightsalmon','lightskyblue'],
-	interval: 100,			// after every such interval, a new letter is generated on screen
+	interval: 50,			// after every such interval, a new letter is generated on screen
 	minTravelTime: 500,
 	travelTimeDiff: 4000,	// the difference between min travel time and max travel time
 	minFontSize: 20,
-	fontSizeDiff: 50		// the difference between min font size and max font size
+	fontSizeDiff: 40,		// the difference between min font size and max font size
+	videoUrl: 'https://www.youtube.com/embed/ZMJEbzfkze8?autoplay=1'
+  //videoUrl: 'https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1'
 }
 
-var settings = {
+var _settings = {
 	letterArray: ['Cranbourne','Berwick','Narre Warren', 'Lymbrook', 'Kew', 'Albert Park', 'Caulfield', 'South Yarra', 'Ivanhoa', 'Cragiebourne', 'Lilydale', 'Lake Entrance'],
 	colorArray: ['lightpink','lightgreen','lightgray','plum', 'lightsalmon','lightskyblue'],
 	interval: 500,			// after every such interval, a new letter is generated on screen
 	minTravelTime: 1000,
 	travelTimeDiff: 7000,	// the difference between min travel time and max travel time
 	minFontSize: 20,
-	fontSizeDiff: 30		// the difference between min font size and max font size
+	fontSizeDiff: 30,		// the difference between min font size and max font size
+	videoUrl: 'https://www.youtube.com/embed/ZMJEbzfkze8?autoplay=1'
 }
 
 var isStarted = false;
@@ -49,6 +52,11 @@ function dropLetters(){
 		$('#introduction').hide();
 		$('#setting').hide();
 		$('#scoreNum').show();
+
+		$('iframe').show();
+		$('iframe').prop('src', settings.videoUrl);
+		//$('iframe')[0].contentWindow.location.reload(true);
+
 
 		itv = setInterval(function(){
 			var currLetterIdx = Math.floor(Math.random()*settings.letterArray.length);
@@ -73,11 +81,15 @@ function dropLetters(){
 			
 			id++;
 		}, settings.interval );
+		
 	}
 	else{
 		clearInterval(itv);
+		//$('iframe').prop('src', '');
+		$('iframe').hide();
 	}
 	isStarted = !isStarted;
+
 }
 
 

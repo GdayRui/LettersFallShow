@@ -53,6 +53,11 @@ span.info3{
 	}
 }
 
+iframe{
+	display: none;
+	border: none;
+}
+
 @media (max-width: 414px){
 	#introduction{
 		color: white;
